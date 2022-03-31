@@ -1,25 +1,29 @@
 package main;
 
 public class Line {
-    public double lengthOfLine(double x1, double y1, double x2, double y2){
-        return Math.pow(Math.pow(x2-x1,2)+Math.pow(y2-y1,2),0.5);
-    }
-    
-     public void equalLines(Double length1,Double length2) {
-        boolean equality = length1.equals(length2);
+    public double xCoordinate1;
+    public double yCoordinate1;
+    public double xCoordinate2;
+    public double yCoordinate2;
 
-        if (equality)
-            System.out.println("Both lines are equal");
-        else
-            System.out.println("Lines are not equal");
+    public Line(double xCoordinate1, double yCoordinate1, double xCoordinate2, double yCoordinate2) {
+        this.xCoordinate1 = xCoordinate1;
+        this.yCoordinate1 = yCoordinate1;
+        this.xCoordinate2 = xCoordinate2;
+        this.yCoordinate2 = yCoordinate2;
     }
 
-    public void compareLines(Double length3, Double length4){
-        if (length3.compareTo(length4)==0)
+    public double lengthOfLine() {
+        return Math.pow(Math.pow(this.xCoordinate2 - this.xCoordinate1, 2) + Math.pow(this.yCoordinate2 - this.yCoordinate1, 2), 0.5);
+    }
+
+    public void compareLines(Line length) {
+        int equality=((Double) this.lengthOfLine()).compareTo(length.lengthOfLine());
+        if (equality == 0)
             System.out.println("lines are equal");
-        else if(length3.compareTo(length4)>0)
+        else if (equality > 0)
             System.out.println("First line is larger than Second");
-        else if (length3.compareTo(length4)<0)
+        else if (equality < 0)
             System.out.println("First line is smaller than Second");
     }
 }
